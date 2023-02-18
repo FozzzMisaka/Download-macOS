@@ -8,7 +8,7 @@ on:
         description: "macOS Version"
         required: true
         options:
-          - Monterey v12.5.1
+          - Monterey v12.6.3
           - Big Sur v11.7.1
           - Catalina v10.15.7
           - Mojave v10.14.6
@@ -68,7 +68,7 @@ jobs:
 
       # Monterey
 
-      - if: github.event.inputs.macos_version == 'Monterey v12.5.1'
+      - if: github.event.inputs.macos_version == 'Monterey v12.6.3'
         name: Generate Monterey ISO
         run: |
           sudo hdiutil create -o /tmp/Monterey -size 16384m -volname Monterey -layout SPUD -fs HFS+J
@@ -80,7 +80,7 @@ jobs:
           hdiutil convert /tmp/Monterey.dmg -format UDTO -o ~/Desktop/Monterey
           mv -v ~/Desktop/Monterey.cdr ~/Desktop/Monterey.iso
           sudo rm -fv /tmp/Monterey.dmg
-      - if: github.event.inputs.macos_version == 'Monterey v12.5.1'
+      - if: github.event.inputs.macos_version == 'Monterey v12.6.3'
         name: Upload Monterey ISO
         uses: actions/upload-artifact@v3.1.0
         with:
